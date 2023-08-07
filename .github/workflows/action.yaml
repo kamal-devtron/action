@@ -30,6 +30,10 @@ jobs:
         BRANCHES=$(curl "https://api.github.com/repos/kamal-devtron/action/branches")
         echo $BRANCHES
 
+        jq -c '.[].name' echo $BRANCHES | while read i; do
+        echo $i
+        done 
+
         if echo "$BRANCHES" | jq -e ".[] | select(.name == "release-candidate")" > /dev/null; then
           echo "Branch $BRANCH_NAME exists"
           echo "::set-output name=branch_exists::true"
