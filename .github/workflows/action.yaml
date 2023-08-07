@@ -34,7 +34,7 @@ jobs:
         echo $SOURCE_BRANCH
         echo $REPO
 
-        curl -L -X PATCH -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28"  -H "Authorization: Bearer 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" \
+        curl -L -X PATCH -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28"  -H "Authorization: Bearer ${{ .secrets.TOKEN }}" \
          https://api.github.com/repos/$REPO/pulls/1 -d '{"base": "release-candidate"}'
         
       env:
