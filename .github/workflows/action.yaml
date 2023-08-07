@@ -31,6 +31,7 @@ jobs:
         curl "https://api.github.com/repos/kamal-devtron/action/branches" > branch.json
         
         jq -c '.[].name' branch.json | while read i; do
+        echo "release-candidate"
         if [[ "$i" != "release-candidate" ]]
         then
           check=1
