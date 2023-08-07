@@ -20,6 +20,8 @@ jobs:
         # Set the new target branch name
         y="ajay"
         x="ajay"
+        echo $x
+        echo $y
         if [[ "$x" != "$y" ]]
         then
           echo "not equal"
