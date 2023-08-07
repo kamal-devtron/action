@@ -27,8 +27,7 @@ jobs:
         PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN {FS="/"} {print $3}')
 
         PR_JSON=$(curl "https://api.github.com/repos/kamal-devtron/action/pulls/$PR_NUMBER")
-        BRANCHES=$(curl -s -H "Authorization: Bearer $token \
-                   "https://api.github.com/repos/kamal-devtron/action/branches")
+        BRANCHES=$(curl -s -H "Authorization: Bearer $token "https://api.github.com/repos/kamal-devtron/action/branches")
 
         if echo "$BRANCHES" | jq -e ".[] | select(.name == \"$BRANCH_NAME\")" > /dev/null; then
           echo "Branch $BRANCH_NAME exists"
