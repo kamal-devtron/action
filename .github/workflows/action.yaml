@@ -42,7 +42,7 @@ jobs:
         cat branch.json
         
         jq -c '.[].name' branch.json | while read i; do
-        echo "release-candidate"
+        echo $i
         branch+=($i)
         done  
 
