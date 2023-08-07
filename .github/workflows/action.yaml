@@ -45,7 +45,8 @@ jobs:
         echo $i
         branch+=($i)
         done  
-
+        
+        echo $branch
         echo "********"
         for i in ${branch[@]}
         do
