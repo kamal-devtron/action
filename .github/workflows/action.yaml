@@ -37,6 +37,7 @@ jobs:
         fi
         done  
         
+        echo $check
        
         echo $? 
               
