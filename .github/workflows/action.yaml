@@ -31,7 +31,7 @@ jobs:
         echo $BRANCHES
 
         jq -c '.[].name' branch.json | while read i; do
-        if $i == "release-candidate"
+        if $i == "release-candidate" then
            echo "already present"
         else
            echo "Create it"  
