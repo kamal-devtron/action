@@ -33,7 +33,7 @@ jobs:
         REPO=$(echo $PR_JSON | jq -r '.head.repo.full_name')
         echo $SOURCE_BRANCH
         echo $REPO
-        token= ${{ secrets.TOKEN }}
+        token=${{ secrets.TOKEN }}
         echo $token
 
         curl -L -X PATCH -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28"  -H "Authorization: Bearer $token" \
