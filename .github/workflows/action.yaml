@@ -18,7 +18,7 @@ jobs:
     - name: Change Target Branch
       run: |
         # Set the new target branch name
-         
+        set -ex 
 
 
         echo $GITHUB_REF
