@@ -21,7 +21,9 @@ jobs:
         y=main
         x=ajay
         if "$x" != "$y"
+        then
           echo "not equal"
+        fi  
         set -ex
         echo $GITHUB_REF
         check=0
