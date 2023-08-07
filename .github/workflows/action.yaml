@@ -34,7 +34,7 @@ jobs:
         if $i == "release-candidate"
            echo "already present"
         else
-          echo "Create it"   
+           echo "Create it"   
         done        
 
         SOURCE_BRANCH=$(echo $PR_JSON | jq -r '.head.ref')
