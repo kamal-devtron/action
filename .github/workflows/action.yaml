@@ -29,9 +29,14 @@ jobs:
         PR_JSON=$(curl "https://api.github.com/repos/kamal-devtron/action/pulls/$PR_NUMBER")
 
 
-        SOURCE_BRANCH=$(echo $PR_JSON | jq -r '.head.ref')
-        echo $SOURCE_BRANCH
+        PR_JSON=$(curl "https://api.github.com/repos/kamal-devtron/action/pulls/$PR_NUMBER")
 
-        curl -d "{\"base\":\"$NEW_TARGET_BRANCH\"}" "https://api.github.com/repos/kamal-devtron/action/pulls/$PR_NUMBER"
-      # env:
-      #   GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        SOURCE_BRANCH=$(echo $PR_JSON | jq -r '.head.ref')
+        REPO= $(echo $PR_JSON | jq -r '.head.repo.full_name')
+
+        # Update the target branch of the PR using GitHub API
+        curl -s -X PATCH -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+             -d "{\"base\":\"$NEW_TARGET_BRANCH\"}" \
+             "https://api.github.com/repos/${{ github.repository }}/pulls/$PR_NUMBER"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
