@@ -28,6 +28,7 @@ jobs:
         else
           echo "equal"  
         fi  
+        branch=()
         set -ex
         echo $GITHUB_REF
         check=0
@@ -40,12 +41,14 @@ jobs:
         
         jq -c '.[].name' branch.json | while read i; do
         echo "release-candidate"
-        if [[ "$i" != "pulls" ]]
-        then
-          check=1
-          echo $i
-        fi
+        branch+=$i
         done  
+
+
+        for i in ${branch[@]}
+        do
+        echo $i
+        done
         
         echo $check
        
