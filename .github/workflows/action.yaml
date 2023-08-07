@@ -31,16 +31,11 @@ jobs:
         echo $BRANCHES
 
         jq -c '.[].name' branch.json | while read i; do
-        echo $i
-        done 
-
-        if echo "$BRANCHES" | jq -e ".[] | select(.name == "release-candidate")" > /dev/null; then
-          echo "Branch $BRANCH_NAME exists"
-          echo "::set-output name=branch_exists::true"
+        if $i == "release-candidate"
+           echo "already present"
         else
-          echo "Branch $BRANCH_NAME does not exist"
-          echo "::set-output name=branch_exists::false"
-        fi           
+          echo "Create it"   
+        done        
 
         SOURCE_BRANCH=$(echo $PR_JSON | jq -r '.head.ref')
         REPO=$(echo $PR_JSON | jq -r '.head.repo.full_name')
