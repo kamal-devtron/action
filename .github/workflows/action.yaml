@@ -28,7 +28,7 @@ jobs:
         else
           echo "equal"  
         fi  
-        branch=()
+        branch=(example kamal)
         # set -ex
         echo $GITHUB_REF
         check=0
@@ -44,7 +44,7 @@ jobs:
         jq -c '.[].name' branch.json | while read i; do
         echo $i
         k=0
-        branch[k]=$(i)
+        branch+=($i)
         k++
         echo "Branch $branch"
         done  
