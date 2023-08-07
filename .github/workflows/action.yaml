@@ -24,6 +24,7 @@ jobs:
 
         echo $PR_NUMBER
         echo $github.repository
+        echo github.event.pull_request
 
       #   # Fetch the PR details using GitHub API
       #   PR_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
