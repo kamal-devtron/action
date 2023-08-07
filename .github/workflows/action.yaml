@@ -45,7 +45,6 @@ jobs:
         echo $i
         k=0
         branch+=($i)
-        k++
         echo "Branch $branch"
         done  
         
