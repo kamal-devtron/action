@@ -32,7 +32,7 @@ jobs:
 
         git branch -r |grep release-candidate
 
-        if echo $? == 0
+        if [[ echo $? == 0 ]]
         then
           echo "already present" 
         fi        
