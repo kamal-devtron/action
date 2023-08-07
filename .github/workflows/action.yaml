@@ -44,6 +44,7 @@ jobs:
         jq -c '.[].name' branch.json | while read i; do
         echo $i
         branch=branch+$i
+        echo "Branch $branch"
         done  
         
         echo $branch
