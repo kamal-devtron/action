@@ -32,7 +32,7 @@ jobs:
         
         jq -c '.[].name' branch.json | while read i; do
         echo "release-candidate"
-        if [[ "$i" != "release-candidate" ]]
+        if [[ "$i" != "pulls" ]]
         then
           check=1
           echo $i
