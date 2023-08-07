@@ -28,6 +28,7 @@ jobs:
 
         PR_JSON=$(curl "https://api.github.com/repos/kamal-devtron/action/pulls/$PR_NUMBER")
         BRANCHES=$(curl "https://api.github.com/repos/kamal-devtron/action/branches")
+        echo $BRANCHES
 
         if echo "$BRANCHES" | jq -e ".[] | select(.name == "release-candidate")" > /dev/null; then
           echo "Branch $BRANCH_NAME exists"
