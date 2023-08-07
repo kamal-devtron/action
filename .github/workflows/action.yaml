@@ -16,7 +16,6 @@ jobs:
 
     - name: Change Target Branch
       run: |
-        # Set the new target branch name
         NEW_TARGET_BRANCH="release-candidate-branch"
         echo $GITHUB_REF
 
