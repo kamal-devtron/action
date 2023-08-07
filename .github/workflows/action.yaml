@@ -29,7 +29,7 @@ jobs:
           echo "equal"  
         fi  
         branch=()
-        set -ex
+        # set -ex
         echo $GITHUB_REF
         check=0
         target=$TARGET_BRANCH
@@ -47,7 +47,7 @@ jobs:
 
         for i in ${branch[@]}
         do
-        echo $i
+          echo $i
         done
         
         echo $check
