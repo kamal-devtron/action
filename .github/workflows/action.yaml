@@ -29,11 +29,16 @@ jobs:
         PR_JSON=$(curl "https://api.github.com/repos/kamal-devtron/action/pulls/$PR_NUMBER")
         curl "https://api.github.com/repos/kamal-devtron/action/branches" > branch.json
         
-        jq -c '.[]' branch.json | while read i; do
-        echo $i
+        jq -c '.[].name' branch.json | while read i; do
+        if $i == release-candidate
+        then
+          check=1
+        else
+          check=0  
         done
         
-
+        if check == 1
+          echo "Present"
         echo $? 
               
 
