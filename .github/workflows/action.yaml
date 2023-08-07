@@ -32,10 +32,7 @@ jobs:
 
         git branch -r | grep pulls
         echo $? 
-        if [[ echo $? == 0 ]]
-        then
-          echo "already present" 
-        fi        
+              
 
         SOURCE_BRANCH=$(echo $PR_JSON | jq -r '.head.ref')
         REPO=$(echo $PR_JSON | jq -r '.head.repo.full_name')
