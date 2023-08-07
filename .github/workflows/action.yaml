@@ -24,7 +24,7 @@ jobs:
 
         echo $PR_NUMBER
 
-        PR_JSON=$(curl "https://api.github.com/repos/kamal-devtron/action/pulls/$PR_NUMBER")
+        PR_JSON=$(curl "https://api.github.com/repos/${{ github.repository }}/pulls/$PR_NUMBER")
 
         SOURCE_BRANCH=$(echo $PR_JSON | jq -r '.head.ref')
         REPO= $(echo $PR_JSON | jq -r '.head.repo.full_name')
