@@ -27,10 +27,10 @@ jobs:
         PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN {FS="/"} {print $3}')
 
         PR_JSON=$(curl "https://api.github.com/repos/kamal-devtron/action/pulls/$PR_NUMBER")
-        BRANCHES=$(curl "https://api.github.com/repos/kamal-devtron/action/branches")
+        curl "https://api.github.com/repos/kamal-devtron/action/branches" > branch.json
         echo $BRANCHES
 
-        jq -c '.[].name' echo $BRANCHES | while read i; do
+        jq -c '.[].name' branch.json | while read i; do
         echo $i
         done 
 
