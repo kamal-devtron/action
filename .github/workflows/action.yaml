@@ -18,11 +18,13 @@ jobs:
     - name: Change Target Branch
       run: |
         # Set the new target branch name
-        y="main"
+        y="ajay"
         x="ajay"
         if [[ "$x" != "$y" ]]
         then
           echo "not equal"
+        else
+          echo "equal"  
         fi  
         set -ex
         echo $GITHUB_REF
