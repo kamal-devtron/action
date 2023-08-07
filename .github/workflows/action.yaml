@@ -17,6 +17,8 @@ jobs:
     - name: Change Target Branch
       run: |
         # Set the new target branch name
+
+        set -ex
         NEW_TARGET_BRANCH="release-candidate-branch"
         echo $GITHUB_REF
 
@@ -31,7 +33,8 @@ jobs:
         echo $SOURCE_BRANCH
         echo $REPO
 
-        curl -L -X PATCH -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28"  -H "Authorization: Bearer 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" https://api.github.com/repos/$REPO/pulls/1 -d '{"base": "release-candidate"}'
+        curl -L -X PATCH -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28"  -H "Authorization: Bearer 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" \
+         https://api.github.com/repos/$REPO/pulls/1 -d '{"base": "release-candidate"}'
         
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
