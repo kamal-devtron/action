@@ -20,7 +20,7 @@ jobs:
         # Set the new target branch name
         
 
-        
+        set -ex
         echo $GITHUB_REF
         check=0
         target=$TARGET_BRANCH
