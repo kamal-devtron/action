@@ -27,10 +27,10 @@ jobs:
 
 
         PR_JSON=$(curl "https://api.github.com/repos/kamal-devtron/action/pulls/$PR_NUMBER")
-        echo $PR_JSON
 
-      #   # Get the source branch name from the PR JSON response
-      #   SOURCE_BRANCH=$(echo $PR_JSON | jq -r '.head.ref')
+
+        SOURCE_BRANCH=$(echo $PR_JSON | jq -r '.head.ref')
+        echo $SOURCE_BRANCH
 
       #   # Update the target branch of the PR using GitHub API
       #   curl -s -X PATCH -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
