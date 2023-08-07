@@ -21,6 +21,7 @@ jobs:
         set -ex
         NEW_TARGET_BRANCH="release-candidate-branch"
         echo $GITHUB_REF
+        echo $TARGET_BRANCH
 
         PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN {FS="/"} {print $3}')
 
@@ -42,3 +43,4 @@ jobs:
         
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TARGET_BRANCH: ${{ secrets.TARGET_BRANCH }}
