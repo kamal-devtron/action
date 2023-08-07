@@ -31,7 +31,7 @@ jobs:
         echo $BRANCHES
 
         git branch -r |grep release-candidate
-
+        echo $? 
         if [[ echo $? == 0 ]]
         then
           echo "already present" 
