@@ -35,6 +35,7 @@ jobs:
           check=1
         else
           check=0  
+        fi  
         done
         
         if check == 1
