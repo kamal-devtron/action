@@ -40,6 +40,7 @@ jobs:
         
         if check == 1
           echo "Present"
+        fi   
         echo $? 
               
 
