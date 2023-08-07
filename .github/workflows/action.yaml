@@ -18,9 +18,9 @@ jobs:
     - name: Change Target Branch
       run: |
         # Set the new target branch name
-        y=main
-        x=ajay
-        if x != y
+        y="main"
+        x="ajay"
+        if [[ "$x" != "$y" ]]
         then
           echo "not equal"
         fi  
