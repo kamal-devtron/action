@@ -23,6 +23,7 @@ jobs:
         PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN {FS="/"} {print $3}')
 
         echo $PR_NUMBER
+        echo $github.repository
 
       #   # Fetch the PR details using GitHub API
       #   PR_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
