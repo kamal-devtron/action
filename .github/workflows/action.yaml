@@ -31,10 +31,7 @@ jobs:
         curl "https://api.github.com/repos/kamal-devtron/action/branches" > branch.json
         
         jq -c '.[].name' branch.json | while read i; do
-        if [[ $i == "${{ secrets.TARGET_BRANCH }}" ]]
-        then
-          check=1
-        fi
+        echo $i
         done  
         
         if check == 1
