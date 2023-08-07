@@ -30,14 +30,10 @@ jobs:
         curl "https://api.github.com/repos/kamal-devtron/action/branches" > branch.json
         echo $BRANCHES
 
-        jq -c '.[].name' branch.json | while read i; do
-        if $i == "release-candidate" 
-        then
-           echo "already present"
-        else
-           echo "Create it"  
-        fi     
-        done        
+        git branch -r | grep release-candidate
+
+        if echo $? == 0
+          echo "already present"      
 
         SOURCE_BRANCH=$(echo $PR_JSON | jq -r '.head.ref')
         REPO=$(echo $PR_JSON | jq -r '.head.repo.full_name')
