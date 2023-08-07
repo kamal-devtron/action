@@ -47,6 +47,7 @@ jobs:
         done  
         
         echo $branch
+        echo $env
         echo "********"
         for i in ${branch[@]}
         do
