@@ -28,7 +28,10 @@ jobs:
 
         PR_JSON=$(curl "https://api.github.com/repos/kamal-devtron/action/pulls/$PR_NUMBER")
         curl "https://api.github.com/repos/kamal-devtron/action/branches" > branch.json
-        echo $BRANCHES
+        
+        jq -c '.[]' branch.json | while read i; do
+        echo $i
+        done
         
 
         echo $? 
