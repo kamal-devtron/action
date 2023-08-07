@@ -30,9 +30,10 @@ jobs:
         curl "https://api.github.com/repos/kamal-devtron/action/branches" > branch.json
         echo $BRANCHES
 
-        branch=$(git branch -r | grep release-candidate)
+        branch=$(git branch -r |grep release-candidate)
 
         if echo $? == 0
+        then
           echo "already present"      
 
         SOURCE_BRANCH=$(echo $PR_JSON | jq -r '.head.ref')
