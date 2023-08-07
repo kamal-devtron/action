@@ -22,6 +22,7 @@ jobs:
 
 
         echo $GITHUB_REF
+        check=0
         target=$TARGET_BRANCH
         token=${{ secrets.TOKEN }}
         PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN {FS="/"} {print $3}')
@@ -30,7 +31,7 @@ jobs:
         curl "https://api.github.com/repos/kamal-devtron/action/branches" > branch.json
         
         jq -c '.[].name' branch.json | while read i; do
-        if $i == "release-candidate"
+        if [[ $i == "release-candidate" ]]
         then
           check=1
         fi
