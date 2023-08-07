@@ -30,7 +30,7 @@ jobs:
         curl "https://api.github.com/repos/kamal-devtron/action/branches" > branch.json
         echo $BRANCHES
 
-        git branch -r | grep pulls
+        git branch -r 
         echo $? 
               
 
