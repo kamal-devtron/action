@@ -5,6 +5,7 @@ on:
     types:
       - opened
       - synchronize
+      - updated
 
 jobs:
   change-target-branch:
@@ -17,9 +18,6 @@ jobs:
     - name: Change Target Branch
       run: |
         # Set the new target branch name
-
-        set -ex
-        NEW_TARGET_BRANCH="release-candidate-branch"
         echo $GITHUB_REF
         target=$TARGET_BRANCH
 
