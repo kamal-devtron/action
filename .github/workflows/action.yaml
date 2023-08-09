@@ -18,22 +18,9 @@ jobs:
     - name: Change Target Branch
       run: |
         # Set the new target branch name
-        # set -ex
         echo $GITHUB_REF
-        check=0
         target=$TARGET_BRANCH
         token=${{ secrets.TOKEN }}
-        PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN {FS="/"} {print $3}')
-        echo $GITHUB_REPOSITORY
-        echo ${{ github.event.pull_request.number }}
-        PR_JSON=$(curl "https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/${{ github.event.pull_request.number }}")
-
-        SOURCE_BRANCH=$(echo $PR_JSON | jq -r '.head.ref')
-        REPO=$(echo $PR_JSON | jq -r '.head.repo.full_name')
-        echo $SOURCE_BRANCH
-        echo $REPO
-       
-        echo $token
 
         curl -L -X PATCH -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28"  -H "Authorization: Bearer $token" \
          https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/${{ github.event.pull_request.number }} -d '{"base": "${{ secrets.TARGET_BRANCH }}"}'
