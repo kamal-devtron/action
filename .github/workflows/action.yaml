@@ -18,53 +18,15 @@ jobs:
     - name: Change Target Branch
       run: |
         # Set the new target branch name
-        y="ajay"
-        x="ajay"
-        echo $x
-        echo $y
-        if [[ "$x" != "$y" ]]
-        then
-          echo "not equal"
-        else
-          echo "equal"  
-        fi  
-        branch=(example kamal)
-        # set -ex
+        set -ex
         echo $GITHUB_REF
         check=0
         target=$TARGET_BRANCH
         token=${{ secrets.TOKEN }}
         PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN {FS="/"} {print $3}')
+        echo $GITHUB_REPOSITORY
 
         PR_JSON=$(curl "https://api.github.com/repos/kamal-devtron/action/pulls/$PR_NUMBER")
-        curl "https://api.github.com/repos/kamal-devtron/action/branches" > branch.json
-
-        cat branch.json
-        
-        jq -c '.[].name' branch.json | while read i; do
-        echo ${i:1:-1}
-        if [[ ${i:1:-1} == "pulls"]]
-        then
-          echo "kamalhw"
-        fi  
-        k=0
-        branch+=${i:1:-1}
-        echo "Branch $branch"
-        done  
-        
-        echo $branch
-        echo $env
-        echo "********"
-        for i in ${branch[@]}
-        do
-          echo $i
-        done
-        echo "*****"
-        
-        echo $check
-       
-        echo $? 
-              
 
         SOURCE_BRANCH=$(echo $PR_JSON | jq -r '.head.ref')
         REPO=$(echo $PR_JSON | jq -r '.head.repo.full_name')
