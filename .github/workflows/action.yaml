@@ -18,7 +18,7 @@ jobs:
     - name: Change Target Branch
       run: |
         # Set the new target branch name
-        set -ex
+        # set -ex
         echo $GITHUB_REF
         check=0
         target=$TARGET_BRANCH
@@ -26,7 +26,7 @@ jobs:
         PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN {FS="/"} {print $3}')
         echo $GITHUB_REPOSITORY
 
-        PR_JSON=$(curl "https://api.github.com/repos/kamal-devtron/action/pulls/$PR_NUMBER")
+        PR_JSON=$(curl "https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER")
 
         SOURCE_BRANCH=$(echo $PR_JSON | jq -r '.head.ref')
         REPO=$(echo $PR_JSON | jq -r '.head.repo.full_name')
