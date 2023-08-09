@@ -6,6 +6,8 @@ on:
       - opened
       - synchronize
       - updated
+      - edited
+      - reopened
 
 jobs:
   change-target-branch:
@@ -19,7 +21,6 @@ jobs:
       run: |
         # Set the new target branch name
         echo $GITHUB_REF
-        target=$TARGET_BRANCH
         token=${{ secrets.TOKEN }}
 
         curl -L -X PATCH -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28"  -H "Authorization: Bearer $token" \
